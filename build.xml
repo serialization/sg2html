@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="jvmCommon">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="javaCommon.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/ogss.common.jvm.jar"/>
+        <pathelement location="lib/ogss.common.java.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="javaCommon.classpath"/>
+        </javac>
+    </target>
+
+  <target depends="build" name="build-jar">
+    <jar destfile="sg2html.jar"
+      basedir="bin"
+      includes=""
+      excludes="">
+        <zipgroupfileset dir="lib" includes="*.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+    </jar>
+  </target>
+</project>
