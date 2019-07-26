@@ -1,5 +1,5 @@
 /*   ____  _____________                                                                                              *\
- *  / __ \/ ___/ __/ __/  Your SKilL ogss Binding                                                                     * 
+ *  / __ \/ ___/ __/ __/  Your OGSS/Java Binding                                                                      * 
  * / /_/ / (_\_\ \_\ \    <<debug>>                                                                                   * 
  * \____/\___/___/___/    by: <<some developer>>                                                                      * 
 \*                                                                                                                    */
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import ogss.common.java.api.SkillException;
+import ogss.common.java.api.OGSSException;
 import ogss.common.java.internal.AnyRefType;
 import ogss.common.java.internal.EnumPool;
 import ogss.common.java.internal.EnumProxy;
@@ -40,6 +40,11 @@ public final class internal {
     public static final class PB extends ogss.common.java.internal.PoolBuilder {
         PB() {
             super(10);
+        }
+
+        @Override
+        protected String[] literals() {
+            return new String[]{""};
         }
 
         @Override

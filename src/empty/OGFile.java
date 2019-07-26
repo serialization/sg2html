@@ -1,5 +1,5 @@
 /*   ____  _____________                                                                                              *\
- *  / __ \/ ___/ __/ __/  Your SKilL ogss Binding                                                                     * 
+ *  / __ \/ ___/ __/ __/  Your OGSS/Java Binding                                                                      * 
  * / /_/ / (_\_\ \_\ \    <<debug>>                                                                                   * 
  * \____/\___/___/___/    by: <<some developer>>                                                                      * 
 \*                                                                                                                    */
@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import ogss.common.java.api.Mode;
-import ogss.common.java.api.SkillException;
+import ogss.common.java.api.OGSSException;
 import ogss.common.java.internal.KCC;
 import ogss.common.java.internal.Pool;
 import ogss.common.java.internal.StateInitializer;
@@ -28,38 +28,38 @@ import ogss.common.java.internal.StateInitializer;
 public final class OGFile extends ogss.common.java.internal.State {
 
     /**
-     * Create a new skill file based on argument path and mode.
+     * Create a new OGSS file based on argument path and mode.
      *
      * @throws IOException
      *             on IO and mode related errors
-     * @throws SkillException
+     * @throws OGSSException
      *             on file or specification consistency errors
      */
-    public static OGFile open(String path, Mode... mode) throws IOException, SkillException {
+    public static OGFile open(String path, Mode... mode) throws IOException, OGSSException {
         return new OGFile(StateInitializer.make(Paths.get(path), new internal.PB(), mode));
     }
 
     /**
-     * Create a new skill file based on argument path and mode.
+     * Create a new OGSS file based on argument path and mode.
      *
      * @throws IOException
      *             on IO and mode related errors
-     * @throws SkillException
+     * @throws OGSSException
      *             on file or specification consistency errors
      */
-    public static OGFile open(File path, Mode... mode) throws IOException, SkillException {
+    public static OGFile open(File path, Mode... mode) throws IOException, OGSSException {
         return new OGFile(StateInitializer.make(path.toPath(), new internal.PB(), mode));
     }
 
     /**
-     * Create a new skill file based on argument path and mode.
+     * Create a new OGSS file based on argument path and mode.
      *
      * @throws IOException
      *             on IO and mode related errors
-     * @throws SkillException
+     * @throws OGSSException
      *             on file or specification consistency errors
      */
-    public static OGFile open(Path path, Mode... mode) throws IOException, SkillException {
+    public static OGFile open(Path path, Mode... mode) throws IOException, OGSSException {
         return new OGFile(StateInitializer.make(path, new internal.PB(), mode));
     }
 
